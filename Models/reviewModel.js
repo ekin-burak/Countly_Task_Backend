@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 
 const reviewSchema = new mongoose.Schema({
-    date: {
-        type: Date,
-        required: false,
-        index: true,
+    movieName: {
+        type: String,
+        required: true,
+        index:true,
     },
     username: {
         type: String,
@@ -22,11 +22,7 @@ const reviewSchema = new mongoose.Schema({
         required: true,
         index: true,
     },
-    movieId: {
-        type: String,
-        required: true,
-        index: true,
-    },
+
   });
 
 const Review = mongoose.model('Review', reviewSchema);

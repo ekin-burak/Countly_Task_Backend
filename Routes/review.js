@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 import Review from '../index.js';
-import Movie from '../index.js'
 
 router.get('/', (req,res) => {
     res.send('We are on reviews');
@@ -9,8 +8,7 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
     const review = new Review({
-        movieName: req.body.title,
-        date: req.body.date,
+        movieName: req.body.movieName,
         username: req.body.username,
         rating: req.body.rating,
         userReview: req.body.userReview,
