@@ -22,6 +22,11 @@ const reviewSchema = new mongoose.Schema({
         required: true,
         index: true,
     },
+    movieId: {
+        type: String,
+        required: true,
+        index: true,
+    },
   });
 
 const Review = mongoose.model('Review', reviewSchema);
