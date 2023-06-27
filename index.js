@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
     res.send('We are on home');
 });
 
+// find all movies
 app.get('/movies', async(req, res) => {
     try {
         const movies = await Movie.find({});
@@ -24,6 +25,7 @@ app.get('/movies', async(req, res) => {
     }
 });
 
+// find movie by id
 app.get('/movies/:id', async(req, res) => {
     try {
         const {id} = req.params.id;
@@ -34,6 +36,7 @@ app.get('/movies/:id', async(req, res) => {
     }
 });
 
+// create or add new movie
 app.post('/movies', async(req, res) => {
     try {
         const movie = await Movie.create(req.body)
@@ -42,6 +45,40 @@ app.post('/movies', async(req, res) => {
         res.status(500).json({message: error.message})
     }
 });
+
+// update movies (for average rating)
+app.put('/movies/:id', async(req,res) => {
+    try {
+        const {id} = req.params.id;
+        const movie = await Movie.findByIdAndUpdate(req.params.id, req.body);
+        if(!movie){
+            return res.status(404).json({ message: 'cannot find any product with ID ${_id}'})
+        }
+        const updatedmovie = await Movie.findById(req.params.id);
+        res.status(200).json(updatedmovie);
+    } catch (error){
+        res.status(500).json({ message: error.message})
+    }
+});
+
+app.get('/reviews', async(req, res) => {
+    try {
+        const reviews = await Review.find({});
+        res.status(200).json(reviews);
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+});
+
+app.post('/reviews', async(req, res) => {
+    try {
+        const review = await Review.create(req.body)
+        res.status(200).json(review);
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+});
+
 
 
 // Connection to MongoDB
@@ -63,4 +100,6 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-export default Movie;
+export default { 
+    Movie, 
+    Review}

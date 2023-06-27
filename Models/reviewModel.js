@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 
+
 const reviewSchema = new mongoose.Schema({
+    movieName: {
+        type: String,
+        required: true,
+        index: true,
+    },
     date: {
         type: Date,
         required: true,

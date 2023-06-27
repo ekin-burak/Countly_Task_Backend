@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const movieSchema = new mongoose.Schema({
-    title: {
+    movieName: {
         type: String,
         required: true,
         index: true,
@@ -18,7 +18,6 @@ const movieSchema = new mongoose.Schema({
     },
     avgRating: {
         type: Number,
-        required: true,
         index: true,
     },
 });

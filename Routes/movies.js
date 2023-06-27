@@ -7,7 +7,7 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
     const movie = new Movie({
-        title: req.body.title,
+        movieName: req.body.movieName,
         description: req.body.description,
         releaseDate: req.body.releaseDate,
         avgRating: req.body.releaseDate,
