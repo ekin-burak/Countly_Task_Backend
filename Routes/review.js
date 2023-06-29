@@ -8,7 +8,6 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
     const review = new Review({
-        movieName: req.body.movieName,
         username: req.body.username,
         rating: req.body.rating,
         userReview: req.body.userReview,

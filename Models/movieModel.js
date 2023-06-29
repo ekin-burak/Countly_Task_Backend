@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const movieSchema = new mongoose.Schema({
+    image: {
+        type: String,
+        required: true,
+        index: true,
+    },
     movieName: {
         type: String,
         required: true,
@@ -18,6 +23,7 @@ const movieSchema = new mongoose.Schema({
     },
     avgRating: {
         type: Number,
+        required: false,
         index: true,
     },
 });

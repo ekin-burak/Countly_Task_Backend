@@ -2,11 +2,6 @@ import mongoose from 'mongoose';
 
 
 const reviewSchema = new mongoose.Schema({
-    movieName: {
-        type: String,
-        required: true,
-        index:true,
-    },
     username: {
         type: String,
         required: true,
@@ -22,6 +17,11 @@ const reviewSchema = new mongoose.Schema({
         required: true,
         index: true,
     },
+    movieID: {
+        type: String,
+        required: false,
+        index:true,
+    }
 
   });
 
